@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.jpg" type="image/gif" sizes="16x16">
+    <title>Celebrare</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <script>
+        // Delay in milliseconds before redirecting (e.g., 5000 = 5 seconds)
+        var delay = 1000;
+
+        // Function to redirect to index.html
+        function redirectToIndex() {
+            window.location.href = "index.html";
+        }
+
+        // Wait for the specified delay and then redirect
+        setTimeout(redirectToIndex, delay);
+    </script>
+
+</head>
+<body>
+    <img src="images/home.webp" alt="Celebrare Icon" class="img-responsive">
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.jpg" type="image/gif" sizes="16x16">
+    <title>Celebrare</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .transition-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            animation: slideInLeft 1s ease-in-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+    <script>
+        // Delay in milliseconds before redirecting (e.g., 5000 = 5 seconds)
+        var delay = 1000;
+
+        // Function to redirect to index.html
+        function redirectToIndex() {
+            window.location.href = "index.html";
+        }
+
+        // Wait for the specified delay, animate the transition, and then redirect
+        setTimeout(function() {
+            var transitionContainer = document.createElement("div");
+            transitionContainer.classList.add("transition-container");
+            document.body.appendChild(transitionContainer);
+
+            setTimeout(function() {
+                redirectToIndex();
+            }, 1000); // Redirect after the slide out animation duration
+        }, delay);
+    </script>
+</head>
+<body>
+    <img src="images/home.webp" alt="Celebrare Icon" class="img-responsive">
+</body>
+</html>

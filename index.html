@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/logo.jpg" type="image/gif" sizes="16x16">
+  <title>Celebrare</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="header-left">
+        <span class="less-than-symbol">&lt;</span> <!-- less than symbol -->
+      </div>
+      <h1 class="header-title">Add Image / Icon</h1>
+      <div class="header-right"></div>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2 class="card-subheading">Upload Image</h2>
+    <input type="file" id="fileInput" style="display:none;">
+    <button class="choose-button" onclick="openGallery()">Choose from Device</button>
+  </div>
+
+  <div class="photo-container" id="photo-container"></div>
+  <div class="subheader" id="subheader">
+    <div class="subheader-left">
+      <span class="back-icon" onclick="goBack()"><i class='bx bx-left-arrow-alt'></i></span>
+    </div>
+    <!-- <div class="subheader-right">
+      <button class="rotate-button" id="rotate-button"><i class='bx bx-rotate-right' ></i></button>
+      <button class="flip-button"><i class='bx bx-reflect-vertical' ></i></button>
+      <button class="crop-button" id="crop-button">Crop</button>
+    </div> -->
+    <div class="subheader-right">
+      <button class="rotate-button" id="rotate-button"><i class='bx bx-rotate-right'></i></button>
+      <!-- <button class="flip-button"><i class='bx bx-reflect-vertical'></i></button> -->
+      <!-- <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn"><i class='bx bx-reflect-vertical'></i></button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#" id="flip-button">Flip Horizontally</a>
+          <a href="#" id="flip-button">Flip vertically</a>
+        </div>
+      </div> -->
+     
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn"><i class='bx bx-reflect-vertical'></i></button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#" onclick="flipImage('horizontal')" id="flip-horizontal-button">Flip Horizontally</a>
+          <a href="#" onclick="flipImage('vertical')" id="flip-vertical-button">Flip Vertically</a>
+          <!-- <button id="flip-horizontal-button">Flip Horizontal</button>
+          <button id="flip-vertical-button">Flip Vertical</button> -->
+
+        </div>
+      </div>
+
+      <button class="crop-button">Crop</button>
+          
+      <!-- <div class="box-2">
+        <div class="result">
+
+        </div>
+      </div>
+
+      <div class="box-2 img-result hide">
+        <img src="" alt="" class="cropped">
+      </div> -->
+
+    </div>
+  </div>
+
+  <div class="photo-container">
+    <img id="selected-image" src="#" alt="">
+  </div>
+  
+  <!-- <div id="cropped-image-container" class="cropped-image-container"></div> -->
+  <!-- <div class="overlay">
+    <div class="cropped-image-container">
+      <img id="cropped-image" alt="Cropped Image">
+      
+    </div>
+  </div> -->
+
+  <div class="overlay">
+    <div class="overlay-card">
+        <div class="image-label">Uploaded Image</div>
+      <div class="close-icon" onclick="closeOverlay();">&times;</div>
+      <div class="cropped-image-container">
+        <div id="cropped-image-container"></div>
+            <img class="uploaded-image" id="cropped-image" src="" alt="Cropped Image">
+        <div id="frame-overlay" class="frame-overlay"></div>
+      </div>
+      <!-- <div class="frame-options">
+        <div class="frame-option" id="frame-option-0" onclick="applyFrame(0)">
+            <div class="frame-option-inner">
+              <span class="frame-option-label">Original</span>
+            </div>
+          </div>          
+        <div class="frame-option" id="frame-option-1" onclick="applyFrame(1)"><img src="frames/user_image_frame_1.png" alt=""></div>
+        <div class="frame-option" id="frame-option-2" onclick="applyFrame(2)"><img src="frames/user_image_frame_2.png" alt=""></div>
+        <div class="frame-option" id="frame-option-3" onclick="applyFrame(3)"><img src="frames/user_image_frame_3.png" alt=""></div>
+        <div class="frame-option" id="frame-option-4" onclick="applyFrame(4)"><img src="frames/user_image_frame_4.png" alt=""></div>
+      </div> -->
+    
+      <div class="frame-options">
+        <div class="frame-option" id="frame-option-0" onclick="applyFrame(0)">
+            <div class="frame-option-inner">
+              <span class="frame-option-label">Original</span>
+            </div>
+          </div>  
+        <div class="frame-option" id="frame-option-1" onclick="applyFrame('Heart')">
+          <img src="frames/user_image_frame_1.png" alt="Frame 2">
+        </div>
+        <div class="frame-option" id="frame-option-2" onclick="applyFrame('square')">
+          <img src="frames/user_image_frame_2.png" alt="Frame 3">
+        </div>
+        <div class="frame-option" id="frame-option-3" onclick="applyFrame('circle')">
+          <img src="frames/user_image_frame_3.png" alt="Frame 4">
+        </div>
+        <div class="frame-option" id="frame-option-4" onclick="applyFrame('rectangle')">
+          <img src="frames/user_image_frame_4.png" alt="Frame 5">
+        </div>
+        
+    </div>
+    <button class="overlay-button" onclick="useSelectedImage()">Use this image</button>
+  </div>
+
+  <svg width="0" height="0">
+    <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+      <path d="M0.5 0.9 C 0.4 0.8, 0.3 0.6, 0.3 0.5 C 0.3 0.4, 0.4 0.2, 0.5 0.1 C 0.6 0.2, 0.7 0.4, 0.7 0.5 C 0.7 0.6, 0.6 0.8, 0.5 0.9 Z"></path>
+    </clipPath>
+  </svg>
+  
+  
+  <div id="selected-frame" class="selected-frame"></div>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Your JavaScript code here
+      });
+  </script>
+
+</body>
+</html>
